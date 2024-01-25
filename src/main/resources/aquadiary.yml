@@ -26,81 +26,91 @@ collected-fish-gui:
 
 
 selector-gui:
-  title: "AquaDiary"
+  title: "&3&lAquatic Journal"
   size: 54
   items:
     common-fish:
-      slots: [19]
-      material: 'TROPICAL_FISH'
-      name: '&bCommon Fish'
+      slots: [20]
+      material: 'COD'
+      name: '&7&lCommon Fish'
       lore:
-        - '&7Click to open'
-        - '&7a common fish'
+        - '&7Click to view your'
+        - '&7caught common fish!'
       linked: Common
     uncommon-fish:
-      slots: [20]
-      material: 'TROPICAL_FISH'
-      name: '&aUncommon Fish'
+      slots: [21]
+      material: 'SALMON'
+      name: '&a&lUncommon Fish'
       lore:
-        - '&7Click to open'
-        - '&7an uncommon fish'
+        - '&7Click to view your'
+        - '&7caught uncommon fish!'
       linked: Uncommon
     junk-fish:
-      slots: [27]
+      slots: [22]
       material: 'FISHING_ROD'
-      name: '&7Junk Fish'
+      name: '&7&lFished Junk'
       lore:
-        - '&7Click to open'
-        - '&7a junk fish'
+        - '&7Click to view your'
+        - '&7caught sea junk!'
       linked: Junk
     rare-fish:
-      slots: [21]
-      material: 'TROPICAL_FISH'
-      name: '&6Rare Fish'
-      lore:
-        - '&7Click to open'
-        - '&7a rare fish'
-      linked: Rare
-    epic-fish:
-      slots: [22]
-      material: 'TROPICAL_FISH'
-      name: '&5Epic Fish'
-      lore:
-        - '&7Click to open'
-        - '&7an epic fish'
-      linked: Epic
-    legendary-fish:
       slots: [23]
       material: 'TROPICAL_FISH'
-      name: '&dLegendary Fish'
+      name: '&b&lRare Fish'
       lore:
-        - '&7Click to open'
-        - '&7a legendary fish'
+        - '&7Click to view your'
+        - '&7caught rare fish!'
+      linked: Rare
+    epic-fish:
+      slots: [24]
+      material: 'PUFFERFISH'
+      name: '&d&lEpic Fish'
+      lore:
+        - '&7Click to view your'
+        - '&7caught epic fish!'
+      linked: Epic
+    legendary-fish:
+      slots: [29]
+      material: 'PLAYER_HEAD'
+      head-64: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzU5NTgxOTM1OWM3ZWQ5ZTk3OWJkNTNhNDliMjg2MTYyMDIzMmQ2YTg3ZWVkNzA2ODdjY2QwYmYwZDNjZThmMyJ9fX0="
+      name: '&6&lLegendary Fish'
+      lore:
+        - '&7Click to view your'
+        - '&7caught legendary fish!'
       linked: Legendary
     mythic-fish:
-      slots: [24]
-      material: 'TROPICAL_FISH'
-      name: '&cMythic Fish'
+      slots: [30]
+      material: 'PLAYER_HEAD'
+      head-64: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE5NGY2OTc0NWQ5YmQ1NTFmYTg3YjQ3NzQ1YjM5MmUzM2I2Y2JkNDNkOTM4ZGEyZWZlZDlmY2FjYzFhYjMifX19"
+      name: '&c&lMythic Fish'
       lore:
-        - '&7Click to open'
-        - '&7a mythic fish'
+        - '&7Click to view your'
+        - '&7caught mythic fish!'
       linked: Mythic
     quirky-fish:
-      slots: [25]
-      material: 'TROPICAL_FISH'
-      name: '&eQuirky Fish'
+      slots: [31]
+      material: 'INK_SAC'
+      name: '&5&lQuirky Fish'
       lore:
-        - '&7Click to open'
-        - '&7a quirky fish'
+        - '&7Click to view your'
+        - '&7caught quirky fish!'
       linked: Quirky
     whimsical-fish:
-      slots: [26]
-      material: 'TROPICAL_FISH'
-      name: '&fWhimsical Fish'
+      slots: [32]
+      material: 'INK_SAC'
+      name: '&9&lWhimsical Fish'
       lore:
-        - '&7Click to open'
-        - '&7a whimsical fish'
+        - '&7Click to view your'
+        - '&7caught whimsical fish!'
       linked: Whimsical
+    fantasia-fish:
+      slots: [33]
+      material: 'INK_SAC'
+      name: '&2&lFantasia Fish'
+      lore:
+        - '&7Click to view your'
+        - '&7caught fantasia fish!'
+      linked: Fantasia
     #border
     border1:
       material: GREEN_STAINED_GLASS_PANE

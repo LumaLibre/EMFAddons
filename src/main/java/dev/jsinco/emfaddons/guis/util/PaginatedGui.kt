@@ -44,7 +44,7 @@ class PaginatedGui (
             }
             currentSlot++
         }
-        for (i in startEndSlots.first .. startEndSlots.second) {
+        for (i in startEndSlots.first until startEndSlots.second) {
             if (ignoreSlots.contains(i)) {
                 continue
             } else if (currentPage.getItem(i) == null) {

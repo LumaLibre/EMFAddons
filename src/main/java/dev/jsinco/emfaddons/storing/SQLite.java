@@ -1,6 +1,7 @@
 package dev.jsinco.emfaddons.storing;
 
 import dev.jsinco.emfaddons.EMFAddons;
+import dev.jsinco.emfaddons.files.FileManager;
 
 import java.io.File;
 import java.sql.Connection;
@@ -20,7 +21,7 @@ public class SQLite extends Database {
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdirs();
         }
-        sqlFile = new File(plugin.getDataFolder(), "data.db");
+        sqlFile = new File(FileManager.getDataFolder(), "emfaddons.db");
         if (!sqlFile.exists()) {
             try {
                 sqlFile.createNewFile();

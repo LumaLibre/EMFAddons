@@ -5,12 +5,16 @@ import com.oheers.fish.fishing.items.Fish;
 import dev.jsinco.emfaddons.EMFAddons;
 import dev.jsinco.emfaddons.Util;
 import dev.jsinco.emfaddons.files.EMFFile;
+import dev.jsinco.emfaddons.guis.SelectorGui;
 import dev.jsinco.emfaddons.guis.util.Gui;
 import dev.jsinco.emfaddons.storing.EMFPlayer;
 import dev.jsinco.emfaddons.storing.SQLite;
+import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.persistence.PersistentDataType;
 
 public class Events implements Listener {
 
@@ -42,5 +46,13 @@ public class Events implements Listener {
         if (event.getInventory().getHolder() instanceof Gui) {
             ((Gui) event.getInventory().getHolder()).handleInvClick(event);
         }
+    }
+
+    @EventHandler
+    public void onPlayerClicksFishJournal(PlayerInteractEvent event) {
+        if (event.getItem() == null || !event.getAction().isRightClick()) return;
+        if (!event.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "fish-diary"), PersistentDataType.BOOLEAN)) return;
+        event.getPlayer().openInventory(SelectorGui.getInv());
+        event.setCancelled(true);
     }
 }

@@ -26,7 +26,11 @@ class GuiItemCreator (file: YamlConfiguration, path: String) {
             val meta = item.itemMeta!!
             meta.setDisplayName(Util.colorcode(configSec.getString("$key.name") ?: ""))
             meta.lore = configSec.getStringList("$key.lore").map { Util.colorcode(it) }
-            meta.persistentDataContainer.set(NamespacedKey(plugin, "gui-item"), PersistentDataType.STRING, "$key.linked")
+            configSec.getString("$key.linked")?.let {
+                meta.persistentDataContainer.set(NamespacedKey(plugin, "gui-item"), PersistentDataType.STRING,
+                    it
+                )
+            }
 
             if (configSec.contains("$key.glow") && configSec.getBoolean("$key.glow")) {
                 meta.addEnchant(Enchantment.DURABILITY, 1, true)

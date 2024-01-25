@@ -4,6 +4,8 @@ import com.destroystokyo.paper.profile.PlayerProfile;
 import com.destroystokyo.paper.profile.ProfileProperty;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.io.File;
@@ -47,5 +49,17 @@ public class Util {
 
     public static String uppercaseFirst(String text) {
         return text.substring(0, 1).toUpperCase() + text.substring(1);
+    }
+
+    public static void giveItem(Player player, ItemStack item) {
+        for (int i = 0; i < 36; i++) {
+            if (player.getInventory().getItem(i) == null || player.getInventory().getItem(i).isSimilar(item)) {
+                player.getInventory().addItem(item);
+                break;
+            } else if (i == 35) {
+                player.getWorld().dropItem(player.getLocation(), item);
+            }
+        }
+
     }
 }

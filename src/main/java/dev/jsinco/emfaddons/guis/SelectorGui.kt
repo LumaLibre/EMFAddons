@@ -1,6 +1,7 @@
 package dev.jsinco.emfaddons.guis
 
 import dev.jsinco.emfaddons.EMFAddons
+import dev.jsinco.emfaddons.Util
 import dev.jsinco.emfaddons.files.FileManager
 import dev.jsinco.emfaddons.guis.util.Gui
 import org.bukkit.Bukkit
@@ -16,7 +17,7 @@ object SelectorGui : Gui {
     private val file = FileManager("aquadiary.yml").generateYamlFile()
 
     @JvmStatic
-    val inv: Inventory = Bukkit.createInventory(this, file.getInt("selector-gui.size"), file.getString("selector-gui.title") ?: "Selector")
+    val inv: Inventory = Bukkit.createInventory(this, file.getInt("selector-gui.size"), Util.colorcode(file.getString("selector-gui.title") ?: "Selector"))
 
     init {
         val items = GuiItemCreator(file, "selector-gui.items").items

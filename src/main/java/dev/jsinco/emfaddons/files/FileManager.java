@@ -1,6 +1,7 @@
 package dev.jsinco.emfaddons.files;
 
 import dev.jsinco.emfaddons.EMFAddons;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -11,13 +12,14 @@ import java.nio.file.Files;
 
 public class FileManager {
     private final static EMFAddons plugin = EMFAddons.getInstance();
-    private final File dataFolder = new File(plugin.getDataFolder().getParentFile() + File.pathSeparator + "EvenMoreFish" + File.pathSeparator + "EMFAddons");
+    private final static File dataFolder = new File(plugin.getDataFolder().getParent() + File.separator + "EvenMoreFish" + File.separator + "EMFAddons");
 
     private final String fileName;
     private final File file;
     private YamlConfiguration yamlConfiguration;
 
     public FileManager(String fileName) {
+        //Bukkit.broadcastMessage(dataFolder.getAbsolutePath());
         if (!dataFolder.exists()) {
             dataFolder.mkdirs();
         }
@@ -57,5 +59,9 @@ public class FileManager {
     public YamlConfiguration generateYamlFile() {
         generateFile();
         return getYamlFile();
+    }
+
+    public static File getDataFolder() {
+        return dataFolder;
     }
 }
