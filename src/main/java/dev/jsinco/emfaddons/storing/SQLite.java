@@ -18,10 +18,7 @@ public class SQLite extends Database {
 
     public SQLite(final EMFAddons plugin) {
         this.plugin = plugin;
-        if (!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdirs();
-        }
-        sqlFile = new File(FileManager.getDataFolder(), "emfaddons.db");
+        sqlFile = new FileManager("emfaddons.db").generateAndGetFile();
         if (!sqlFile.exists()) {
             try {
                 sqlFile.createNewFile();

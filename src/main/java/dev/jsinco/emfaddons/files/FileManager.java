@@ -34,15 +34,17 @@ public class FileManager {
             if (!file.exists()) {
                 file.createNewFile();
                 InputStream inputStream = plugin.getResource(fileName);
-                OutputStream outputStream = Files.newOutputStream(file.toPath());
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
+                if (inputStream != null) {
+                    OutputStream outputStream = Files.newOutputStream(file.toPath());
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    inputStream.close();
+                    outputStream.flush();
+                    outputStream.close();
                 }
-                inputStream.close();
-                outputStream.flush();
-                outputStream.close();
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -59,6 +61,15 @@ public class FileManager {
     public YamlConfiguration generateYamlFile() {
         generateFile();
         return getYamlFile();
+    }
+
+    public File generateAndGetFile() {
+        generateFile();
+        return file;
+    }
+
+    public File getFile() {
+        return file;
     }
 
     public static File getDataFolder() {

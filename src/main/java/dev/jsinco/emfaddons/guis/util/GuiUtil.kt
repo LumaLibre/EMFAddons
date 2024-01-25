@@ -16,11 +16,11 @@ object GuiUtil {
         val pair: Pair<ItemStack, ItemStack> = Pair(ItemStack(Material.ARROW), ItemStack(Material.ARROW))
 
         var meta = pair.first.itemMeta!!
-        meta.setDisplayName("Previous Page")
+        meta.setDisplayName(Util.colorcode("&#f498f6Previous Page"))
         meta.persistentDataContainer.set(NamespacedKey(plugin, "collectedfish-gui-item"), PersistentDataType.STRING, "previous")
         pair.first.itemMeta = meta
         meta = pair.second.itemMeta!!
-        meta.setDisplayName("Next Page")
+        meta.setDisplayName(Util.colorcode("&#f498f6Next Page"))
         meta.persistentDataContainer.set(NamespacedKey(plugin, "collectedfish-gui-item"), PersistentDataType.STRING, "next")
         pair.second.itemMeta = meta
         return pair
