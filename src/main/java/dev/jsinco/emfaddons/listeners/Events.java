@@ -1,0 +1,46 @@
+package dev.jsinco.emfaddons.listeners;
+
+import com.oheers.fish.api.EMFFishEvent;
+import com.oheers.fish.fishing.items.Fish;
+import dev.jsinco.emfaddons.EMFAddons;
+import dev.jsinco.emfaddons.Util;
+import dev.jsinco.emfaddons.files.EMFFile;
+import dev.jsinco.emfaddons.guis.util.Gui;
+import dev.jsinco.emfaddons.storing.EMFPlayer;
+import dev.jsinco.emfaddons.storing.SQLite;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+
+public class Events implements Listener {
+
+    private final EMFAddons plugin;
+    private final SQLite sqLite;
+
+    public Events(EMFAddons plugin, SQLite sqLite) {
+        this.plugin = plugin;
+        this.sqLite = sqLite;
+    }
+
+    @EventHandler
+    public void onEMFFish(EMFFishEvent event) {
+        Fish fish = event.getFish();
+        EMFPlayer emfPlayer = sqLite.fetchPlayer(event.getPlayer().getUniqueId().toString());
+
+
+        if (!emfPlayer.hasCaughtFish(fish.getName()) || emfPlayer.getLongestLength(fish.getName()) < fish.getLength()) {
+            emfPlayer.addCaughtFish(fish.getName(), fish.getLength());
+            event.getPlayer().sendMessage(Util.colorcode(
+                    new EMFFile("messages.yml").getFile().getString("prefix") +
+                            "You caught a new record for " + fish.getName() + "!"
+            ));
+        }
+    }
+
+    @EventHandler
+    public void onInvClick(InventoryClickEvent event) {
+        if (event.getInventory().getHolder() instanceof Gui) {
+            ((Gui) event.getInventory().getHolder()).handleInvClick(event);
+        }
+    }
+}

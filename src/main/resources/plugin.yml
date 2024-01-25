@@ -1,0 +1,10 @@
+name: EMFAddons
+version: '${version}'
+main: dev.jsinco.emfaddons.EMFAddons
+api-version: '1.20'
+depend: [EvenMoreFish]
+commands:
+  emfaddons:
+    description: EMFAddons command
+    permission: emfaddons.command
+    usage: /<command>

@@ -1,0 +1,124 @@
+collected-fish-gui:
+  #next: 50
+  #back: 49
+  #previous: 48
+  border-items:
+    border1:
+      material: GREEN_STAINED_GLASS_PANE
+      slots: [ 0, 8, 45, 53 ]
+      name: '&0'
+    border2:
+      material: GRASS
+      slots: [ 1, 7, 46, 52 ]
+      name: '&0'
+    border3:
+      material: FERN
+      slots: [ 2, 6, 47, 51 ]
+      name: '&0'
+    border4:
+      material: PINK_TULIP
+      slots: [ 3, 5, 48, 50 ]
+      name: '&0'
+    border5:
+      material: LILY_PAD
+      slots: [ 4, 49 ]
+      name: '&0'
+
+
+selector-gui:
+  title: "AquaDiary"
+  size: 54
+  items:
+    common-fish:
+      slots: [19]
+      material: 'TROPICAL_FISH'
+      name: '&bCommon Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a common fish'
+      linked: Common
+    uncommon-fish:
+      slots: [20]
+      material: 'TROPICAL_FISH'
+      name: '&aUncommon Fish'
+      lore:
+        - '&7Click to open'
+        - '&7an uncommon fish'
+      linked: Uncommon
+    junk-fish:
+      slots: [27]
+      material: 'FISHING_ROD'
+      name: '&7Junk Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a junk fish'
+      linked: Junk
+    rare-fish:
+      slots: [21]
+      material: 'TROPICAL_FISH'
+      name: '&6Rare Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a rare fish'
+      linked: Rare
+    epic-fish:
+      slots: [22]
+      material: 'TROPICAL_FISH'
+      name: '&5Epic Fish'
+      lore:
+        - '&7Click to open'
+        - '&7an epic fish'
+      linked: Epic
+    legendary-fish:
+      slots: [23]
+      material: 'TROPICAL_FISH'
+      name: '&dLegendary Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a legendary fish'
+      linked: Legendary
+    mythic-fish:
+      slots: [24]
+      material: 'TROPICAL_FISH'
+      name: '&cMythic Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a mythic fish'
+      linked: Mythic
+    quirky-fish:
+      slots: [25]
+      material: 'TROPICAL_FISH'
+      name: '&eQuirky Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a quirky fish'
+      linked: Quirky
+    whimsical-fish:
+      slots: [26]
+      material: 'TROPICAL_FISH'
+      name: '&fWhimsical Fish'
+      lore:
+        - '&7Click to open'
+        - '&7a whimsical fish'
+      linked: Whimsical
+    #border
+    border1:
+      material: GREEN_STAINED_GLASS_PANE
+      slots: [ 0, 8, 45, 53 ]
+      name: '&0'
+    border2:
+      material: GRASS
+      slots: [ 1, 7, 46, 52 ]
+      name: '&0'
+    border3:
+      material: FERN
+      slots: [ 2, 6, 47, 51 ]
+      name: '&0'
+    border4:
+      material: PINK_TULIP
+      slots: [ 3, 5, 48, 50 ]
+      name: '&0'
+    border5:
+      material: LILY_PAD
+      slots: [ 4, 49 ]
+      name: '&0'
