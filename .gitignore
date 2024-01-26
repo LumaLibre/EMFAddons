@@ -50,7 +50,7 @@ hs_err_pid*
 
 # General
 .DS_Store
-.AppleDouble
+.AppleFloat
 .LSOverride
 
 # Icon must end with two \r

@@ -52,7 +52,7 @@ public abstract class Database {
 
             statement.setString(1, uuid);
             String allCaughtFishJson = statement.executeQuery().getString("all_caught_fish");
-            Map<String, Float> allCaughtFish = allCaughtFishJson != null ? gson.fromJson(allCaughtFishJson, Map.class) : new HashMap<>();
+            Map<String, Double> allCaughtFish = allCaughtFishJson != null ? gson.fromJson(allCaughtFishJson, Map.class) : new HashMap<>();
             EMFPlayer player = new EMFPlayer(uuid, allCaughtFish);
             cachedPlayers.add(player);
             return player;

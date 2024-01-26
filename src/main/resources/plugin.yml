@@ -3,8 +3,13 @@ version: '${version}'
 main: dev.jsinco.emfaddons.EMFAddons
 api-version: '1.20'
 depend: [EvenMoreFish]
+softdepend: [LuckPerms]
 commands:
   emfaddons:
     description: EMFAddons command
     permission: emfaddons.command
     usage: /<command>
+  notifynewfishrecord:
+    description: Notify new fish record
+    usage: /<command>
+    aliases: [fn]

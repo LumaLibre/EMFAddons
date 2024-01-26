@@ -62,8 +62,7 @@ class CollectedFishGui (
             }
         }
 
-
-        for (fishKey in collectedFishOfRarity) {
+        for (fishKey in collectedFishOfRarity.toSortedMap()) {
             val keyString = fishKey.key
             val item = ItemStack(if (configSec.contains("$keyString.item.material")) {
                 Material.valueOf(configSec.getString("$keyString.item.material") ?: "COD")
@@ -86,9 +85,12 @@ class CollectedFishGui (
             if (configSec.getBoolean("$fishKey.glowing")) {
                 meta.addEnchant(Enchantment.LUCK, 1, true)
             }
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES)
+
+            for (itemFlag in ItemFlag.entries) {
+                meta.addItemFlags(itemFlag)
+            }
             meta.setDisplayName(Util.colorcode("$rarityColor${fishKey.key}"))
-            val loreList: MutableList<String> = mutableListOf(Util.colorcode("&fYour largest catch"), Util.colorcode("&fis &b${fishKey.value}cm &flong!"))
+            val loreList: MutableList<String> = mutableListOf(Util.colorcode("&fYour largest catch"), Util.colorcode("&fis ${rarityColor}${fishKey.value}cm &flong!"))
             if (configSec.getStringList("$fishKey.item.lore").isNotEmpty()) loreList.add("")
             loreList.addAll(configSec.getStringList("$fishKey.item.lore").map { Util.colorcode(it) })
             loreList.addAll(listOf("", Util.colorcode("$rarityColor&l${rarity.uppercase()}")))

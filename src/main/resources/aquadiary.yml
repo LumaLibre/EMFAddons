@@ -48,7 +48,7 @@ selector-gui:
     junk-fish:
       slots: [22]
       material: 'FISHING_ROD'
-      name: '&7&lFished Junk'
+      name: '&#888888&lFished Junk'
       lore:
         - '&7Click to view your'
         - '&7caught sea junk!'
@@ -89,7 +89,7 @@ selector-gui:
       linked: Mythic
     quirky-fish:
       slots: [31]
-      material: 'INK_SAC'
+      material: 'GLOW_INK_SAC'
       name: '&5&lQuirky Fish'
       lore:
         - '&7Click to view your'
@@ -97,16 +97,16 @@ selector-gui:
       linked: Quirky
     whimsical-fish:
       slots: [32]
-      material: 'INK_SAC'
-      name: '&9&lWhimsical Fish'
+      material: 'PRISMARINE_CRYSTALS'
+      name: '&#B6FDBF&lWhimsical Fish'
       lore:
         - '&7Click to view your'
         - '&7caught whimsical fish!'
       linked: Whimsical
     fantasia-fish:
       slots: [33]
-      material: 'INK_SAC'
-      name: '&2&lFantasia Fish'
+      material: 'QUARTZ'
+      name: '&#E3BDFD&lFantasia Fish'
       lore:
         - '&7Click to view your'
         - '&7caught fantasia fish!'

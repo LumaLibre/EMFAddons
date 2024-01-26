@@ -1,9 +1,12 @@
 package dev.jsinco.emfaddons.storing;
 
 import com.google.gson.Gson;
+import org.bukkit.Bukkit;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class EMFPlayer {
     private final static Gson gson = new Gson();
@@ -14,9 +17,17 @@ public class EMFPlayer {
     private long lastUpdated = System.currentTimeMillis();
 
 
-    public EMFPlayer(String uuid, Map<String, Float> allCaughtFish) {
+    /*public EMFPlayer(String uuid, <String, Float> allCaughtFish) {
         this.uuid = uuid;
         this.allCaughtFish = allCaughtFish;
+    }*/
+
+    public EMFPlayer(String uuid, Map<String, Double> allCaughtFish) {
+        this.uuid = uuid;
+        this.allCaughtFish = new HashMap<>();
+        for (Map.Entry<String, Double> entry : allCaughtFish.entrySet()) {
+            this.allCaughtFish.put(entry.getKey(), entry.getValue().floatValue());
+        }
     }
 
     public EMFPlayer(String uuid, String allCaughtFish) {
@@ -36,12 +47,12 @@ public class EMFPlayer {
         this.allCaughtFish = allCaughtFish;
     }
 
-    public void addCaughtFish(String fishName, float length) {
+    public void addCaughtFish(String fishName, Float length) {
         allCaughtFish.put(fishName, length);
     }
 
-    public float getLongestLength(String fishName) {
-        if (!hasCaughtFish(fishName)) return 0;
+    public Float getLongestLength(String fishName) {
+        if (!hasCaughtFish(fishName)) return 0.0f;
         return allCaughtFish.get(fishName);
     }
 

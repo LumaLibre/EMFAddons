@@ -19,14 +19,11 @@ import java.util.List;
 public class GiveJournalCommand implements SubCommand {
     @Override
     public void execute(EMFAddons plugin, CommandSender sender, String[] args) {
-        Player target = null;
-        if (sender instanceof Player) {
-            target = (Player) sender;
-        } else if (args.length > 1) {
-            target = Bukkit.getPlayerExact(args[1]);
-        } else {
+        if (args.length < 2) {
+            sender.sendMessage("Usage: /emfaddons givejournal <player>");
             return;
         }
+        Player target = Bukkit.getPlayerExact(args[1]);;
 
 
         ItemStack item = new ItemStack(Material.BOOK);

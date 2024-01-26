@@ -3,6 +3,7 @@ package dev.jsinco.emfaddons.commands;
 import dev.jsinco.emfaddons.EMFAddons;
 import dev.jsinco.emfaddons.commands.subcommands.GiveJournalCommand;
 import dev.jsinco.emfaddons.commands.subcommands.GuiCommand;
+import dev.jsinco.emfaddons.commands.subcommands.SaveCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -17,7 +18,8 @@ public class CommandManager implements TabExecutor {
 
     private final static Map<String, SubCommand> subCommands = new HashMap<>(Map.of(
             "gui", new GuiCommand(),
-            "givejournal", new GiveJournalCommand()
+            "givejournal", new GiveJournalCommand(),
+            "save", new SaveCommand()
     ));
     private final EMFAddons plugin;
 
