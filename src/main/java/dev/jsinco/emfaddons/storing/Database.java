@@ -70,6 +70,7 @@ public abstract class Database {
 
     public void saveCachedPlayers() {
         for (EMFPlayer player : cachedPlayers) {
+            if (player.getAllCaughtFish().isEmpty()) continue;
             try (PreparedStatement statement = getConnection().prepareStatement(
                     "INSERT OR REPLACE INTO emf_players (uuid, all_caught_fish) VALUES (?, ?)")) {
 
