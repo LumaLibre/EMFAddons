@@ -13,7 +13,7 @@ public abstract class Database {
     private final static Gson gson = new Gson();
     private final static List<EMFPlayer> cachedPlayers = new ArrayList<>();
 
-    private int bukkitTaskId = -1;
+    private static int bukkitTaskId = -1;
 
     public abstract Connection getConnection();
     public abstract void closeConnection();

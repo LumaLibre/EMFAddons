@@ -2,7 +2,6 @@ package dev.jsinco.emfaddons;
 
 import dev.jsinco.emfaddons.commands.CommandManager;
 import dev.jsinco.emfaddons.commands.NotifyNewRecordCommand;
-import dev.jsinco.emfaddons.guis.SelectorGui;
 import dev.jsinco.emfaddons.guis.util.Gui;
 import dev.jsinco.emfaddons.listeners.Events;
 import dev.jsinco.emfaddons.storing.SQLite;

@@ -1,12 +1,9 @@
 package dev.jsinco.emfaddons.storing;
 
 import com.google.gson.Gson;
-import org.bukkit.Bukkit;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class EMFPlayer {
     private final static Gson gson = new Gson();
