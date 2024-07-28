@@ -60,7 +60,7 @@ public class Events implements Listener {
 
     @EventHandler
     public void onPlayerClicksFishJournal(PlayerInteractEvent event) {
-        if (event.getItem() == null || !event.getAction().isRightClick()) return;
+        if (event.getItem() == null || !event.getAction().isRightClick() || !event.getItem().hasItemMeta()) return;
         if (!event.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "fish-diary"), PersistentDataType.BOOLEAN)) return;
         event.getPlayer().openInventory(SelectorGui.getInv());
         event.setCancelled(true);
