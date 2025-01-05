@@ -19,28 +19,26 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
 import org.bukkit.persistence.PersistentDataType
-import java.util.*
+import java.util.UUID
 
 
 class CollectedFishGui (
     val rarity: String,
     val uuid: String
 ) : Gui {
-    override fun getInventory(): Inventory { return base }
 
     constructor(rarity: String, uuid: UUID) : this(rarity, uuid.toString())
-    private val raritiesFile = EMFFile("rarities.yml").file
-    private val rarityColor: String = raritiesFile.getString("rarities.$rarity.colour") ?: ""
+    private val fishFile = EMFFile("rarities/$rarity.yml").file
+    private val rarityColor: String = fishFile.getString("colour") ?: ""
 
     private val base = Bukkit.createInventory(this, 54, "$rarityColor&lCaught $rarity Fish")
 
     private val collectedFish: Map<String, Float> = EMFAddons.getSQLite().fetchPlayer(uuid).allCaughtFish
-    private val fishFile = EMFFile("fish.yml").file
     private val collectedFishOfRarity: MutableMap<String, Float> = mutableMapOf()
     private val fishItems: MutableList<ItemStack> = mutableListOf()
 
 
-    lateinit var paginatedGui: PaginatedGui
+    private var paginatedGui: PaginatedGui? = null
 
     init {
         initGui()
@@ -54,7 +52,7 @@ class CollectedFishGui (
             }
         }
 
-        val configSec = fishFile.getConfigurationSection("fish.$rarity") ?: return
+        val configSec = fishFile.getConfigurationSection("fish") ?: return
 
         for (fishKey in configSec.getKeys(false)) {
             if (collectedFish.contains(fishKey)) {
@@ -103,19 +101,19 @@ class CollectedFishGui (
         paginatedGui = PaginatedGui("$rarityColor&l$rarity ${rarityColor}Fish", base, fishItems, Pair(19, 35), ignoreSlots = listOf(26, 27))
 
         val guiArrows = GuiUtil.getGuiArrows()
-        for (page in paginatedGui.pages) {
+        for (page in paginatedGui!!.pages) {
             page.setItem(49, GuiUtil.getBackButton())
-            if (paginatedGui.indexOf(page) != 0) {
+            if (paginatedGui!!.indexOf(page) != 0) {
                 page.setItem(48, guiArrows.first)
             }
-            if (paginatedGui.indexOf(page) != paginatedGui.pages.size - 1) {
+            if (paginatedGui!!.indexOf(page) != paginatedGui!!.pages.size - 1) {
                 page.setItem(50, guiArrows.second)
             }
         }
     }
 
     fun openInventory(player: Player) {
-        player.openInventory(paginatedGui.getPage(0))
+        paginatedGui?.let { player.openInventory(it.getPage(0)) }
     }
 
     override fun handleInvClick(event: InventoryClickEvent) {
@@ -128,13 +126,15 @@ class CollectedFishGui (
                 player.openInventory(inv)
             }
             "previous" -> {
-                if (paginatedGui.indexOf(event.inventory) == 0) return
-                player.openInventory(paginatedGui.getPage(paginatedGui.indexOf(event.inventory) - 1))
+                if (paginatedGui?.indexOf(event.inventory) == 0) return
+                paginatedGui?.getPage(paginatedGui?.indexOf(event.inventory)?.minus(1) ?: return)?.let { player.openInventory(it) }
             }
             "next" -> {
-                if (paginatedGui.indexOf(event.inventory) == paginatedGui.pages.size - 1) return
-                player.openInventory(paginatedGui.getPage(paginatedGui.indexOf(event.inventory) + 1))
+                if (paginatedGui?.indexOf(event.inventory) == paginatedGui!!.pages.size - 1) return
+                paginatedGui?.getPage(paginatedGui?.indexOf(event.inventory)?.plus(1) ?: return)?.let { player.openInventory(it) }
             }
         }
     }
+
+    override fun getInventory(): Inventory = base
 }
