@@ -14,7 +14,6 @@ import dev.jsinco.emfaddons.storing.SQLite;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.node.Node;
-import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -67,7 +66,7 @@ public class Events implements Listener {
     }
 
 
-    @EventHandler
+    //@EventHandler
     public void onEMFStartCompetitionStart(EMFCompetitionStartEvent event) {
         if (!EMFAddons.isUseLuckPermsAPI()) {
             plugin.getLogger().warning("LuckPerms not found, cannot remove weekend permission");
@@ -91,7 +90,7 @@ public class Events implements Listener {
         }
     }
 
-    @EventHandler
+   //@EventHandler
     public void onEMFEndCompetition(EMFCompetitionEndEvent event) {
         if (!EMFAddons.isUseLuckPermsAPI()) {
             plugin.getLogger().warning("LuckPerms not found, cannot remove weekend permission");

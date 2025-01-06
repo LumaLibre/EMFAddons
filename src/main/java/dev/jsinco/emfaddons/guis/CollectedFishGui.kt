@@ -53,6 +53,7 @@ class CollectedFishGui (
         }
 
         val configSec = fishFile.getConfigurationSection("fish") ?: return
+        val totalFish = configSec.getKeys(false).size
 
         for (fishKey in configSec.getKeys(false)) {
             if (collectedFish.contains(fishKey)) {
@@ -101,7 +102,13 @@ class CollectedFishGui (
         paginatedGui = PaginatedGui("$rarityColor&l$rarity ${rarityColor}Fish", base, fishItems, Pair(19, 35), ignoreSlots = listOf(26, 27))
 
         val guiArrows = GuiUtil.getGuiArrows()
+        val totalFishItem = GuiUtil.createGuiItem(Material.BOOK,
+            "${rarityColor}Total Fish Caught",
+            listOf(
+                Util.colorcode("&fYou have caught &6${collectedFishOfRarity.size}/$totalFish &ffish of this rarity!")),
+            true)
         for (page in paginatedGui!!.pages) {
+            page.setItem(4, totalFishItem)
             page.setItem(49, GuiUtil.getBackButton())
             if (paginatedGui!!.indexOf(page) != 0) {
                 page.setItem(48, guiArrows.first)
