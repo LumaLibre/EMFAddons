@@ -1,7 +1,9 @@
 package dev.jsinco.emfaddons;
 
 import dev.jsinco.emfaddons.commands.CommandManager;
+import dev.jsinco.emfaddons.commands.FSCommand;
 import dev.jsinco.emfaddons.commands.NotifyNewRecordCommand;
+import dev.jsinco.emfaddons.commands.SFCommand;
 import dev.jsinco.emfaddons.guis.util.Gui;
 import dev.jsinco.emfaddons.listeners.Events;
 import dev.jsinco.emfaddons.storing.SQLite;
@@ -15,6 +17,7 @@ public final class EMFAddons extends JavaPlugin {
     private static SQLite sqLite;
     private static EMFAddons instance;
     private static boolean useLuckPermsAPI;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -23,6 +26,9 @@ public final class EMFAddons extends JavaPlugin {
         getCommand("emfaddons").setExecutor(new CommandManager(this));
         getCommand("notifynewfishrecord").setExecutor(new NotifyNewRecordCommand());
         useLuckPermsAPI = getServer().getPluginManager().getPlugin("LuckPerms") != null;
+
+        getCommand("fs").setExecutor(new FSCommand());
+        getCommand("sf").setExecutor(new SFCommand());
     }
 
     @Override
@@ -46,9 +52,5 @@ public final class EMFAddons extends JavaPlugin {
     public static LuckPerms getLuckPermsAPI() {
         if (!useLuckPermsAPI) return null;
         return Bukkit.getServicesManager().getRegistration(LuckPerms.class).getProvider();
-    }
-
-    public static boolean isUseLuckPermsAPI() {
-        return useLuckPermsAPI;
     }
 }

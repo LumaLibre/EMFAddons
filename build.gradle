@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.20-R0.1-SNAPSHOT"
-    compileOnly 'com.github.Oheers:EvenMoreFish:1.5.0.1'
+    compileOnly(files("libs/even-more-fish-2.0.0-SNAPSHOT-RELEASE.jar"))
     compileOnly "net.luckperms:api:5.4"
     implementation "org.xerial:sqlite-jdbc:3.7.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"

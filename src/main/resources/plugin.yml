@@ -13,3 +13,9 @@ commands:
     description: Notify new fish record
     usage: /<command>
     aliases: [fn]
+  fs:
+    description: Fish top command alias
+    usage: /<command>
+  sf:
+    description: Fish shop command alias
+    usage: /<command>
