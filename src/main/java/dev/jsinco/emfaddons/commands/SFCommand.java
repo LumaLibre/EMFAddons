@@ -1,8 +1,8 @@
 package dev.jsinco.emfaddons.commands;
 
 import com.oheers.fish.api.economy.Economy;
-import com.oheers.fish.config.messages.ConfigMessage;
-import com.oheers.fish.gui.guis.SellGUI;
+import com.oheers.fish.gui.guis.SellGui;
+import com.oheers.fish.messages.ConfigMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +17,11 @@ public class SFCommand implements CommandExecutor {
             return true;
         }
 
-        new SellGUI(player, SellGUI.SellState.NORMAL, null).open();
+        if (!checkEconomy(sender)) {
+            return true;
+        }
+
+        new SellGui(player, SellGui.SellState.NORMAL, null).open();
         return true;
     }
 

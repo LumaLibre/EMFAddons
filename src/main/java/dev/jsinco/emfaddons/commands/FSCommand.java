@@ -1,7 +1,7 @@
 package dev.jsinco.emfaddons.commands;
 
 import com.oheers.fish.competition.Competition;
-import com.oheers.fish.config.messages.ConfigMessage;
+import com.oheers.fish.messages.ConfigMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,7 +21,7 @@ public class FSCommand implements CommandExecutor {
             ConfigMessage.NO_COMPETITION_RUNNING.getMessage().send(player);
             return true;
         }
-        active.sendPlayerLeaderboard(player);
+        active.sendLeaderboard(player);
         return true;
     }
 }
