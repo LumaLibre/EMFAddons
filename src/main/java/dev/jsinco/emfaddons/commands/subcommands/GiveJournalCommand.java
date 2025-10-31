@@ -32,7 +32,7 @@ public class GiveJournalCommand implements SubCommand {
         meta.setDisplayName(Util.colorcode("&#2b5dfb&lA&#2e69fb&lq&#3275fb&lu&#3580fb&la&#388cfc&lt&#3c98fc&li&#3fa4fc&lc &#42affc&lJ&#45bbfc&lo&#49c7fc&lu&#4cd3fd&lr&#4fdefd&ln&#53eafd&la&#56f6fd&ll"));
         meta.setLore(List.of(Util.colorcode("&7Right-click to view"), Util.colorcode("&7your collected fish!")));
         meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "fish-diary"), PersistentDataType.BOOLEAN, true);
-        meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        meta.addEnchant(Enchantment.UNBREAKING, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
 

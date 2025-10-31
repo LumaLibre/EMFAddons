@@ -82,7 +82,7 @@ class CollectedFishGui (
             }
 
             if (configSec.getBoolean("$fishKey.glowing")) {
-                meta.addEnchant(Enchantment.LUCK, 1, true)
+                meta.addEnchant(Enchantment.LUCK_OF_THE_SEA, 1, true)
             }
 
             for (itemFlag in ItemFlag.entries) {

@@ -33,7 +33,7 @@ class GuiItemCreator (file: YamlConfiguration, path: String) {
             }
 
             if (configSec.contains("$key.glow") && configSec.getBoolean("$key.glow")) {
-                meta.addEnchant(Enchantment.DURABILITY, 1, true)
+                meta.addEnchant(Enchantment.UNBREAKING, 1, true)
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS)
             }
 
