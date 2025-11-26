@@ -1,7 +1,7 @@
 package dev.jsinco.emfaddons.listeners;
 
-import com.oheers.fish.api.EMFFishEvent;
-import com.oheers.fish.fishing.items.Fish;
+import com.oheers.fish.api.events.EMFFishCaughtEvent;
+import com.oheers.fish.api.fishing.items.IFish;
 import dev.jsinco.emfaddons.EMFAddons;
 import dev.jsinco.emfaddons.Util;
 import dev.jsinco.emfaddons.files.EMFFile;
@@ -27,8 +27,8 @@ public class Events implements Listener {
     }
 
     @EventHandler
-    public void onEMFFish(EMFFishEvent event) {
-        Fish fish = event.getFish();
+    public void onEMFFish(EMFFishCaughtEvent event) {
+        IFish fish = event.getFish();
         EMFPlayer emfPlayer = sqLite.fetchPlayer(event.getPlayer().getUniqueId().toString());
 
 
