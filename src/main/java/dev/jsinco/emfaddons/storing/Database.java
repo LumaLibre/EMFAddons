@@ -2,18 +2,20 @@ package dev.jsinco.emfaddons.storing;
 
 import com.google.gson.Gson;
 import dev.jsinco.emfaddons.EMFAddons;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import org.bukkit.Bukkit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public abstract class Database {
     private final static Gson gson = new Gson();
     private final static List<EMFPlayer> cachedPlayers = new ArrayList<>();
 
-    private static int bukkitTaskId = -1;
+    private static ScheduledTask bukkitTask;
 
     public abstract Connection getConnection();
     public abstract void closeConnection();
@@ -28,12 +30,11 @@ public abstract class Database {
         }
 
         // Async Bukkit Database task
-        bukkitTaskId =
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(EMFAddons.getInstance(), () -> {
+        bukkitTask = Bukkit.getAsyncScheduler().runAtFixedRate(EMFAddons.getInstance(), (task) -> {
             saveCachedPlayers();
             cachedPlayers.removeIf(emfPlayer
                     -> emfPlayer.getLastUpdated() + 600000 < System.currentTimeMillis());
-        },0L, 12000L);
+        },0L, 600L, TimeUnit.SECONDS);
     }
 
     public EMFPlayer fetchPlayer(UUID uuid) {
@@ -84,6 +85,6 @@ public abstract class Database {
     }
 
     public void cancelBukkitTask() {
-        Bukkit.getScheduler().cancelTask(bukkitTaskId);
+        bukkitTask.cancel();
     }
 }
