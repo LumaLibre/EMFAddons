@@ -35,10 +35,7 @@ public class Events implements Listener {
         if (!emfPlayer.hasCaughtFish(fish.getName()) || emfPlayer.getLongestLength(fish.getName()) < fish.getLength()) {
             emfPlayer.addCaughtFish(fish.getName(), fish.getLength());
             if (!event.getPlayer().hasPermission("emfaddons.notifyrecord")) return;
-            event.getPlayer().sendMessage(Util.colorcode(
-                    new EMFFile("messages.yml").getFile().getString("prefix") +
-                            "You caught a new record for a &#f498f6" + fish.getName() + "&#E2E2E2!"
-            ));
+            event.getPlayer().sendMessage(Util.colorcode(Util.PREFIX + "You caught a new record for a &#f498f6" + fish.getName() + "&#E2E2E2!"));
         }
     }
 

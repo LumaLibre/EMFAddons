@@ -15,6 +15,7 @@ public class Util {
     private final static EMFAddons plugin = EMFAddons.getInstance();
     private static final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
 
+    public static final String PREFIX = "&#b986f9&lInfo &8»&#E2E2E2 ";
 
     public static File getEMFDataFolder() {
         return new File(plugin.getDataFolder().getParent() + File.separator + "EvenMoreFish");

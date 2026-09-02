@@ -12,7 +12,7 @@ public class SaveCommand implements SubCommand {
     @Override
     public void execute(EMFAddons plugin, CommandSender sender, String[] args) {
         EMFAddons.getSQLite().saveCachedPlayers();
-        sender.sendMessage(Util.colorcode(new EMFFile("messages.yml").getFile().getString("prefix") + "Saved all players to database."));
+        sender.sendMessage(Util.colorcode(Util.PREFIX + "Saved all players to database."));
     }
 
     @Override

@@ -21,11 +21,17 @@ repositories {
         name = 'jitpack'
         url = 'https://jitpack.io'
     }
+    maven {
+        name = 'EvenMoreFish'
+        url = 'https://repo.codemc.io/repository/EvenMoreFish/'
+    }
 }
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT"
-    compileOnly(files("libs/even-more-fish-2.1.3-1.21.jar"))
+    compileOnly('com.oheers.evenmorefish:even-more-fish-plugin:2.4.3') {
+        exclude group: 'de.tr7zw', module: 'item-nbt-api'
+    }
     compileOnly "net.luckperms:api:5.4"
     implementation "org.xerial:sqlite-jdbc:3.7.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
