@@ -29,9 +29,7 @@ repositories {
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT"
-    compileOnly('com.oheers.evenmorefish:even-more-fish-plugin:2.4.3') {
-        exclude group: 'de.tr7zw', module: 'item-nbt-api'
-    }
+    compileOnly(files("libs/EvenMoreFish-2.4.6.jar"))
     compileOnly "net.luckperms:api:5.4"
     implementation "org.xerial:sqlite-jdbc:3.7.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
